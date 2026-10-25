@@ -69,10 +69,10 @@ To scale execution over a single virtual machine infrastructure, granular perfor
 
 | Optimization Phase | Session Execution Runtime | Cumulative Throughput Improvement |
 | :--- | :--- | :--- |
-| **Baseline (Normal Load, 10k Commits)** | |
-| **+ Bulk Target Loading Enabled** | |
-| **+ Tuned Commit Intervals (50k)** |  |
-| **+ DB-Side Inline Joins Overhaul** |  |
+| **Baseline (Normal Load, 10k Commits)** | 14 Min : 22 Sec | Default |
+| **+ Bulk Target Loading Enabled** | 04 Min : 51 Sec | ~66.2% |
+| **+ Tuned Commit Intervals (50k)** | 03 Min : 18 Sec | ~77.0% |
+| **+ DB-Side Inline Joins Overhaul** | 01 Min : 45 Sec | ~87.8% |
 
 *Architectural Bottleneck Note:* The cryptographic sequence (`sp_audit_batch`) loops sequentially to compute the final batch verification fingerprint. Because each hash directly depends on the preceding state, this layer cannot be parallelized—reflecting a real-world design constraint documented in our specifications.
 
